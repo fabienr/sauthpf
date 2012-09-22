@@ -100,7 +100,8 @@ $(EXECUTABLE_CLIENT): $(OBJECTS_CLIENT)
 $(CONFIG_PHP):
 	cp -r src/modules src/php/
 	cd src/php/ && DEFINES="$(DEFINES)" phpize-${PHP_VERSION} && \
-	    ./configure --enable-sauthpf && cd ../.. && touch $(CONFIG_PHP)
+	    ./configure --with-php-config=php-config-$(PHP_VERSION) \
+	    --enable-sauthpf && cd ../.. && touch $(CONFIG_PHP)
 
 $(LIB_PHP):$(CONFIG_PHP)
 	cd src/php/ && make && cd ../.. && touch $(LIB_PHP)
