@@ -1,0 +1,141 @@
+
+TODO: iptables et sauth pour la compatibilité linux.
+
+Sauthpf : 
+
+
+Syntaxe des programmes :
+
+
+
+	SAUTHPF-DAEMON : 
+	
+	Daemon permettant de lancer la socket à l'écoute des requêtes.
+	
+	sauthpf-daemon [-f <path/to/conf>] [-V] [-v] [-vv] [-d] (lancer en root)
+
+	-f <path/to/conf> : chemin du fichier de configuration
+		Ce paramètre permet de changer le comportement par défaut du programme.
+		Exemple :
+			-f /usr/local/share/data/sauthpf.conf
+	
+	-V : Donne la version actuelle du programme.
+
+	-v : Active le mode verbose, affiche LOG_INFO.
+	
+	-vv : Active le mode verbose, affiche LOG_DEBUG.
+
+	-d : Active le mode debug, écrit sur STDERR.
+	
+
+
+	SAUTHPF-CLIENT :
+	
+	Permet de communiquer avec le daemon via la socket pour toutes les requêtes.
+	
+	sauthpf-client [-f] && ([-A -n <user> -i <ip> | -A -n <user> -i <ip> -p 
+	    <password>] | [-U -n <user> | -U -i <ip>] | [-T] -i <ip> | [-P] | [-L] | [-h <date>]) [-V] [-v] [-vv] [-d]
+	
+	-f : <path/to/conf> : chemin du fichier de configuration
+		Ce paramètre permet de changer le comportement par défaut du programme.
+		Exemple :
+			-f /usr/local/share/data/sauthpf.conf
+	
+	-A : Authentification
+		Authentifie l'utilisateur avec son ip dans la bdd et charge les règles
+		PF. Le mot de passe est nécessaire seulement si SAUTH (Secure Auth) est
+		activée, celle-ci n'est fonctionnelle que sur OpenBSD.
+	
+	-U : Désauthentification
+		Désauthentifie l'utilisateur de la bdd et décharge les règles PF. Si
+		l'argument est une ip, désauthentifie l'utilisateur uniquement sur la
+		machine concernée, si l'argument est un utilisateur, désauthentifie
+		toutes les sessions de l'utilisateur sur toutes les machines.
+	
+	-n <user> : Nom de l'utilisateur
+	
+	-i <ip> : Ip de l'utilisateur
+	
+	-p <password> : Mot de passe de l'utilisateur nécessaire pour SAUTH pour 
+	    l'authentification système.
+
+	-T : Teste si l'ip donnée est authentifiée.
+
+	-P : Envoie un ping au daemon
+	
+	-L : Liste tout les utilisateurs authentifiés.
+	
+	-h <date> : List dans la bdd tout les logs depuis la date <date>.
+	
+	-V : Donne la version actuelle du programme.
+
+	-v : Active le mode verbose, affiche LOG_INFO.
+	
+	-vv : Active le mode verbose, affiche LOG_DEBUG.
+
+	-d : Active le mode debug, écrit sur stderr.
+
+
+
+	SAUTHPF-SQUID :
+	
+	sauthpf-squid [-f] [-v] [-vv] [-d] [-V]
+	
+	-f : <path/to/conf> : chemin du fichier de configuration
+		Ce paramètre permet de changer le comportement par défaut du programme.
+		Exemple :
+			-f /usr/local/share/data/sauthpf.conf
+	
+	-v : Active le mode verbose, affiche LOG_INFO.
+	
+	-vv : Active le mode verbose, affiche LOG_DEBUG.
+
+	-d : Active le mode debug, écrit sur stderr.
+
+	-V : Donne la version actuelle du programme.
+	
+
+
+	SAUTHPF-CLEANER :
+	
+	A lancer de façon périodique (au choix lors de la mise en place), 
+	    contrôle la présence de sessions expirées, et si il y en a, les 
+	    décharge de PF, et les supprime de la bdd. 
+	
+	sauthpf-cleaner [-f] [-V] [-v] [-vv] [-d]
+	
+	-f : <path/to/conf> : chemin du fichier de configuration
+		Ce paramètre permet de changer le comportement par défaut du programme.
+		Exemple :
+			-f /usr/local/share/data/sauthpf.conf
+	
+	-V : Donne la version actuelle du programme.
+
+	-v : Active le mode verbose, affiche LOG_INFO.
+	
+	-vv : Active le mode verbose, affiche LOG_DEBUG.
+
+	-d : Active le mode debug, écrit sur stderr.
+	
+	
+	Ce que vous devez paramétrer :
+		
+		Vous devez lancer le script create_session.sh situé dans 
+		/usr/local/share/data/, pour créer les tables de la base de données
+		sqlite3 avec le chemin désiré.
+		Copier le chemin choisi dans le fichier de configuration
+		(bdd_path = ) en enlevant le #.
+		Emplacement par défaut dans le fichier de configuration :
+		/var/db/sauthpf/sessions.sqlite
+		
+		
+		
+		
+	Emplacement du fichier de configuration :
+
+	Par défaut le fichier de configuration se trouve dans 
+	/etc/sauthpf/sauthpf.conf.
+	Il est possible de changer ce comportemeant à partir de la ligne de
+	commande, avec les paramètres du programme.
+
+	

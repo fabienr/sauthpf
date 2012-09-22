@@ -1,0 +1,142 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	color: #555;
+	background-color: #F7F7F7;
+	font-family: Verdana, "Lucida Sans Unicode", Arial, sans-serif;
+}
+
+p, cite, code, pre, ul {
+	font-size: 12px;
+	text-align: justify;
+}
+
+p.center {
+	margin: auto;
+	text-align: center;
+}
+
+table {
+	margin: auto;
+	text-align: center;
+}
+
+h1 {
+	font-size:20px;
+	line-height: 36px;
+	height: 50px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#content {
+	width: 800px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+#content form {
+	width: 100%;
+	display: block;
+	text-align: left;
+}
+
+#content form table {
+	font-size: 14px;
+}
+
+#content form table tr td {
+	padding: 2px;
+}
+
+#content form table tr td.label {
+	height: 28px;
+	line-height: 28px;
+	padding-right: 15px;
+	text-align: right;
+	color: #666;
+}
+
+#content form table tr td.entries {
+	width: 290px;
+	text-align: left;
+	height: 28px;
+	line-height: 28px;
+}
+
+#content form input[type="text"],
+#content form input[type="password"] {
+	width: 180px;
+	border: 1px solid #ccc;
+	padding: 5px;
+	height: 28px;
+}
+
+#content form input[type="text"]:focus,
+#content form input[type="password"]:focus {
+	border: 1px solid #999;
+}
+
+#content form input[type="submit"] {
+	width: 180px;
+	padding: 5px;
+	height: 28px;
+}
+
+#auth {
+	padding: 20px;
+	margin-bottom: 20px;
+	background: #fff url('./bg.png') repeat-x center bottom;
+	border: 1px solid #d4d4d4;
+	-webkit-box-shadow: #ccc 0px 0px 4px;
+	-moz-box-shadow: #ccc 0px 0px 4px;
+	box-shadow: #ccc 0px 0px 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#denied p {
+	display:block;
+	width: 600px;
+}
+
+#denied span.left {
+	width:200px;
+}
+
+.left {
+	display:block;
+	float:left;
+}
+
+.error {
+	color:red;
+	width:100%;
+	text-align:center;
+	font-weight: bold;
+}
+
+#list_users table, #historique table {
+	width: 100%;
+}
+
+#list_users th, #historique th {
+	border-bottom: 1px solid black;
+}
+
+#list_users td, #historique td {
+	border-bottom: 1px dashed black;
+}
+
+#list_users td.center form {
+	margin: auto;
+	text-align: center;
+}
+
+.ui-datepicker {
+	font-size: 12px;
+}

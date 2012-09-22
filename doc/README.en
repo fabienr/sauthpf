@@ -1,0 +1,139 @@
+
+TODO: iptables and sauth for Linux compatibility.
+
+Sauthpf :
+
+
+Command line options :
+
+
+
+	SAUTHPF-DAEMON : 
+	
+	Daemon running the socket and waiting for requests.
+	
+	sauthpf-daemon [-f <path/to/conf>] [-V] [-v] [-vv] [-d] (run privilegied)
+
+	-f <path/to/conf> : path to the config file
+		This parameter change the default program behavior.
+		Example :
+			-f /usr/local/share/data/sauthpf.conf
+	
+	-V : Gives the current program version.
+
+	-v : Verbose mode, shows LOG_INFO.
+	
+	-vv : Verbose mode, shows LOG_DEBUG.
+
+	-d : Debug mode, outputs on STDERR.
+	
+
+
+	SAUTHPF-CLIENT :
+	
+	Communicates with the client througth the socket.
+	
+	sauthpf-client [-f] && ([-A -n <user> -i <ip> | -A -n <user> -i <ip> -p 
+	    <password>] | [-U -n <user> | -U -i <ip>] | [-T] -i <ip> | [-P] | [-L] | [-h <date>]) [-V] [-v] [-vv] [-d]
+	
+	-f : <path/to/conf> : path to the config file
+		This parameter change the default program behavior.
+		Example :
+			-f /usr/local/share/data/sauthpf.conf
+	
+	-A : Authentication
+		Authenticates user in database with his IP address and load PF rules.
+		Password is only required in case of SAUTH (Secure AUTH) activation,
+		this one only works on OpenBSD.
+	
+	-U : Unauthentication
+		Unauthenticates user in database and unload PF rules.
+		If argument matches an IP address, the user is only unauthenticated on
+		the concerned host. If argument matches an user, all user's sessions
+		are unauthenticated on every hosts.
+	
+	-n <user> : Username
+	
+	-i <ip> : User IP address
+	
+	-p <password> : User password.
+		Required by SAUTH for system authentication.
+
+	-T : Test if given IP address is authenticated.
+
+	-P : Send PING request to daemon.
+	
+	-L : List all authenticated users.
+	
+	-h <date> : List all logs in databases since <date> date.
+	
+	-V : Shows running software version.
+
+	-v : Verbose mode, shows LOG_INFO.
+	
+	-vv : Verbose mode, shows LOG_DEBUG.
+
+	-d : Debug mode, outputs on STDERR.
+
+
+
+	SAUTHPF-SQUID :
+	
+	sauthpf-squid [-f] [-v] [-vv] [-d] [-V]
+	
+	-f : <path/to/conf> : path to the config file
+		This parameter change the default program behavior.
+		Example :
+			-f /usr/local/share/data/sauthpf.conf
+	
+	-V : Gives the current program version.
+	
+	-v : Verbose mode, shows LOG_INFO.
+	
+	-vv : Verbose mode, shows LOG_DEBUG.
+
+	-d : Debug mode, outputs on STDERR.
+	
+
+
+	SAUTHPF-CLEANER :
+	
+	To be launched periodically (you should choose while installing),
+		checks expired sessions presence, unloads them from PF and deletes in
+		database if exists.
+	
+	sauthpf-cleaner [-f] [-V] [-v] [-vv] [-d]
+	
+	-f : <path/to/conf> : path to the config file
+		This parameter change the default program behavior.
+		Example :
+			-f /usr/local/share/data/sauthpf.conf
+	
+	-V : Gives the current program version.
+	
+	-v : Verbose mode, shows LOG_INFO.
+	
+	-vv : Verbose mode, shows LOG_DEBUG.
+
+	-d : Debug mode, outputs on STDERR.
+	
+	
+	What you should do :
+		
+		In order to create sqlite3 database tables througth a specified path,
+		you have to run create_session.sh script located in :
+		/usr/local/share/data/
+		Copy chosen path in configuration file (bdd_path = ). Be sure that
+		theres no more '#' on line start.
+		Default path in conf file: /var/db/sauthpf/sessions.sqlite
+		
+		
+		
+		
+	Configuration file location :
+
+	Default configuration file path : /etc/sauthpf/sauthpf.conf
+	This behaviour can be modified with command line, according to software
+	parameters.
+
+	

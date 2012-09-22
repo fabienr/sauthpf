@@ -1,0 +1,80 @@
+msgid "SauthPF : control web access page"
+msgstr "SauthPF : control web access page"
+
+msgid "Could not connect to "
+msgstr "Could not connect to "
+
+msgid "User associated with IP != user in squid. Strange error : REPORT this to your administrator"
+msgstr "user associated with IP != user in squid : strange error : REPORT this to the administrator"
+
+msgid "Invalid username or password"
+msgstr "Invalid username or password"
+
+msgid "Authentication"
+msgstr "Authentication"
+
+msgid "Username"
+msgstr "Username"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Login"
+msgstr "Login"
+
+msgid "Logout"
+msgstr "Logout"
+
+msgid "Welcome"
+msgstr "Welcome"
+
+msgid "Users actually connected"
+msgstr "Users actually connected"
+
+msgid "User"
+msgstr "User"
+
+msgid "IP address"
+msgstr "IP address"
+
+msgid "Connected on"
+msgstr "Connected on"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Force logout"
+msgstr "Force logout"
+
+msgid "History"
+msgstr "History"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Unknown"
+msgstr "Unknown"
+
+msgid "Not authenticated"
+msgstr "Not authenticated"
+
+msgid "Access denied"
+msgstr "Access denied"
+
+msgid "Hostname"
+msgstr "Hostname"
+
+msgid "Group"
+msgstr "Group"
+
+msgid "Website category"
+msgstr "Website category"
+
+msgid "Website address"
+msgstr "Website address"
+
+msgid "You are authenticated with IP "
+msgstr "You are authenticated with IP "
+
+msgid "since"
+msgstr "since"

@@ -1,0 +1,80 @@
+msgid "SauthPF : control web access page"
+msgstr "SauthPF : contr&ocirc;le d'acc&egrave;s au web"
+
+msgid "Could not connect to "
+msgstr "Impossible de se connecter &agrave; "
+
+msgid "User associated with IP != user in squid. Strange error : REPORT this to your administrator"
+msgstr "L'utilisateur associ&eacute; &agrave; cette UP ne correspond pas &agrave; l'utilisateur dans squid. Erreur &eacute;trange : la reporter &agrave; votre administrateur"
+
+msgid "Invalid username or password"
+msgstr "Identifiant ou mot de passe invalide"
+
+msgid "Authentication"
+msgstr "Authentification"
+
+msgid "Username"
+msgstr "Identifiant"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Login"
+msgstr "S'authentifier"
+
+msgid "Logout"
+msgstr "D&eacute;connexion"
+
+msgid "Welcome"
+msgstr "Bienvenue"
+
+msgid "Users actually connected"
+msgstr "Utilisateurs actuellement connect&eacute;s"
+
+msgid "User"
+msgstr "Utilisateur"
+
+msgid "IP address"
+msgstr "Adresse IP"
+
+msgid "Connected on"
+msgstr "Connect&eacute; depuis"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Force logout"
+msgstr "D&eacute;connecter"
+
+msgid "History"
+msgstr "Historique"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Unknown"
+msgstr "Inconnu"
+
+msgid "Not authenticated"
+msgstr "Non authentifi&eacute;"
+
+msgid "Access denied"
+msgstr "Acc&egrave;s refus&eacute;"
+
+msgid "Hostname"
+msgstr "Nom d'h&ocirc;te"
+
+msgid "Group"
+msgstr "Groupe"
+
+msgid "Website category"
+msgstr "Cat&eacute;gorie de site web"
+
+msgid "Website address"
+msgstr "Adresse du site web"
+
+msgid "You are authenticated with IP "
+msgstr "Vous &ecirc;tes authentifi&eacute; avec l'IP "
+
+msgid "since"
+msgstr "depuis"
