@@ -8,7 +8,7 @@ SOURCES_MODULES+= src/modules/bdd.c
 SOURCES_MODULES+= src/modules/fwl.c
 # comment this for linux
 SOURCES_MODULES+= src/firewall/pf.c
-# uncomment this for linux
+# uncomment this for linux : XXX no code there !
 #SOURCES_MODULES+= src/firewall/ipt.c
 SOURCES_MODULES+= src/modules/log.c
 SOURCES_MODULES+= src/modules/users.c
@@ -33,6 +33,8 @@ SOURCES_CLIENT = src/client/main.c
 OBJECTS_CLIENT = $(SOURCES_CLIENT:.c=.o) $(SOURCES_MODULES:.c=.o)
 EXECUTABLE_CLIENT = sauthpf-client
 
+SOURCES_PHP = src/php/php-sauthpf.c
+SOURCES_CONFIG_PHP = src/php/config.m4
 CONFIG_PHP = php-sauthpf-config
 LIB_PHP = php-sauthpf
 
@@ -97,13 +99,13 @@ $(EXECUTABLE_DAEMON): $(OBJECTS_DAEMON)
 $(EXECUTABLE_CLIENT): $(OBJECTS_CLIENT)
 	$(CC) $(LDFLAGS) $(OBJECTS_CLIENT) -o $@
 
-$(CONFIG_PHP):
+$(CONFIG_PHP): $(SOURCES_CONFIG_PHP)
 	cp -r src/modules src/php/
 	cd src/php/ && DEFINES="$(DEFINES)" phpize-${PHP_VERSION} && \
 	    ./configure --with-php-config=php-config-$(PHP_VERSION) \
 	    --enable-sauthpf && cd ../.. && touch $(CONFIG_PHP)
 
-$(LIB_PHP):$(CONFIG_PHP)
+$(LIB_PHP):$(CONFIG_PHP) $(SOURCES_PHP) $(SOURCES_MODULES)
 	cd src/php/ && make && cd ../.. && touch $(LIB_PHP)
 
 .c.o:

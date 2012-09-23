@@ -1,6 +1,12 @@
 <?php
 
-$admin = array('root', 'fromano');
+if ($_SERVER['HTTPS'] != "on") {
+	$url = "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+	header("Location: $url");
+	exit;
+}
+
+$admin = array('root');
 /* if secure_auth is false
  * 	try to bind uid=<username>,dn with a ldap server at host:port
  * else
@@ -69,6 +75,8 @@ sauthpf_init("./sauthpf.conf") or die("Could not init sauthpf");
 
 if (isset($_GET['clientaddr']))
 	$ip = $_GET['clientaddr'];
+else if (isset($_POST['clientaddr']))
+	$ip = $_POST['clientaddr'];
 else
 	$ip = getip();
 
@@ -84,6 +92,11 @@ if (isset($_GET['clientuser']) && $_GET['clientuser'] != $user) {
 	die(_("User associated with IP != user in squid. Strange error : REPORT this to your administrator"));
 }
 */
+
+if (isset($_POST['unauth']) && $user) {
+	sauthpf_unauth($ip, 1);
+	exit;
+}
 
 if (isset($_POST['auth']) && isset($_POST['user']) && isset($_POST['pass'])) {
 	if (!$secure_auth && try_auth($_POST['user'], $_POST['pass'])) {
@@ -104,11 +117,6 @@ if (isset($_POST['auth']) && isset($_POST['user']) && isset($_POST['pass'])) {
 	} else {
 		$error = _("Invalid username or password");
 	}
-}
-
-if (isset($_POST['unauth']) && $user) {
-	sauthpf_unauth($ip, 1);
-	$auth = false;
 }
 
 ?>
